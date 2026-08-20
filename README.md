@@ -65,10 +65,23 @@ form at deploy time and collects submissions under **Forms → updates** in the 
 
 Two things to do once after the first deploy:
 
-1. Netlify → Forms → **updates** → *Settings → Form notifications* → add an email notification
-   so new signups land in your inbox.
-2. Netlify → Forms → *Spam filtering* — the form already carries a honeypot field
-   (`bot-field`); turn on reCAPTCHA only if spam actually shows up.
+1. **Email notifications** — without these, submissions only pile up in the dashboard.
+   Netlify → **Project configuration → Notifications → Emails and webhooks →
+   Form submission notifications → Add notification**. Enter your email and pick the
+   `updates` form (or all forms).
+
+   Because the form has a field literally named `email`, Netlify sets the `Reply-to`
+   header on those notifications — so you can answer a subscriber straight from your inbox.
+
+   If nothing arrives, check spam first; Netlify's notification mail is sometimes delayed
+   or filtered.
+
+2. **Spam** — the form already carries a honeypot field (`bot-field`), which stops the
+   usual drive-by bots. Only turn on reCAPTCHA (Netlify → Forms → Spam filtering) if junk
+   actually starts coming through; it costs every real visitor a puzzle.
+
+Netlify's dashboard navigation moves around from time to time. If a path here is stale,
+search the dashboard for "form notifications" rather than hunting through menus.
 
 `script.js` submits the form with `fetch` so the visitor never leaves the page. With
 JavaScript disabled the same form posts normally and lands on `/thanks.html`.
