@@ -314,6 +314,12 @@ a:hover .cover, .card:hover .cover{ transform:translateY(-4px); box-shadow:0 12p
 .footer-note{ margin:0 0 12px; }
 .footer-legal{ margin:0; font-size:.86rem; color:#6c748a; }
 
+/* ---------------- small phones ---------------- */
+@media (max-width:520px){
+  .shape-ring{ top:-300px; right:-250px; }
+  .eyebrow{ font-size:.72rem; letter-spacing:.1em; }
+}
+
 /* ---------------- reveal on scroll ---------------- */
 .reveal{ opacity:0; transform:translateY(16px); }
 .reveal.is-in{ opacity:1; transform:none; transition:opacity .5s ease, transform .5s ease; }
