@@ -73,9 +73,18 @@ JavaScript disabled the same form posts normally and lands on `/thanks.html`.
 
 ## Custom domain
 
-The canonical URL, sitemap and Open Graph tags currently point at
-`https://darrellnicholas.com/`. If the domain ends up different, update those three places:
-`index.html` (`<link rel="canonical">`, `og:url`), `sitemap.xml`, and `robots.txt`.
+The site deliberately hardcodes no domain — it works on whatever Netlify URL it lands on.
+Once a real domain is in place, three optional additions to `index.html` help search engines
+and link previews:
+
+```html
+<link rel="canonical" href="https://your-domain/">
+<meta property="og:url" content="https://your-domain/">
+<meta property="og:image" content="https://your-domain/assets/og.png">
+```
+
+Point them only at a domain you actually control. A canonical tag aimed at a domain someone
+else owns hands them credit for the content.
 
 ## Brand
 
