@@ -1,3 +1,19 @@
+# macOS
 .DS_Store
+._*
+
+# Original cover art — the web-sized JPEGs in assets/covers are what ship
 incoming/*
 !incoming/README.txt
+
+# Netlify CLI
+.netlify/
+
+# Editors
+.vscode/
+.idea/
+
+# Misc
+*.log
+.env
+.env.*

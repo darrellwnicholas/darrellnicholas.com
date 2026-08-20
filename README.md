@@ -1,6 +1,7 @@
-# darrellnicholas.com
+# Darrell Nicholas — portfolio site
 
-Single-page portfolio site for Darrell Nicholas — independent author and app developer.
+Single-page site for Darrell Nicholas, independent author and app developer:
+the books, the Vector app, the bio, and an email signup.
 
 Plain HTML, CSS and one small JavaScript file. No build step, no framework, no external
 requests (no web fonts, no analytics, no CDN). It loads in one round trip plus assets.
@@ -9,6 +10,7 @@ requests (no web fonts, no analytics, no CDN). It loads in one round trip plus a
 
 ```
 index.html          the whole site (hero, books, app, about, contact)
+LICENSE             MIT for the code, all rights reserved for the content
 styles.css          all styles, mobile-first
 script.js           sticky nav, scroll reveal, Netlify form submit
 thanks.html         no-JS fallback landing page for the signup form
@@ -97,3 +99,10 @@ else owns hands them credit for the content.
 
 Taken from the published book cover. They live at the top of `styles.css` as CSS custom
 properties — change them there and the whole site follows.
+
+## License
+
+The code — HTML, CSS, JavaScript, the cover-resize script — is MIT licensed. Take any of it.
+
+The content is not: the site copy, the bio, the book titles and descriptions, the cover art,
+the Vector icon and the name stay all rights reserved. The full wording is in [LICENSE](LICENSE).
