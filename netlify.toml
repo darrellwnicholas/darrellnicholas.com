@@ -27,3 +27,14 @@
   for = "/script.js"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+# Test builds handed out to people directly. nosniff is set site-wide above, so
+# the APK has to state its real type or the browser refuses to act on it.
+# Unlisted rather than secret — noindex keeps it out of search results.
+[[headers]]
+  for = "/downloads/*"
+  [headers.values]
+    Content-Type = "application/vnd.android.package-archive"
+    Content-Disposition = "attachment"
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "public, max-age=3600"
