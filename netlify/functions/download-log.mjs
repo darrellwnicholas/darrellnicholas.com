@@ -21,9 +21,35 @@ export default async (req) => {
   }
 
   const store = getStore("vector-downloads");
+
+  // Deleting is POST-only and names every key explicitly — there is deliberately
+  // no "purge everything", so a stray request can't wipe the record.
+  if (req.method === "POST") {
+    const keys = (url.searchParams.get("purge") || "")
+      .split(",")
+      .map((k) => k.trim())
+      .filter(Boolean);
+
+    if (!keys.length) {
+      return Response.json({ error: "name the keys to purge" }, { status: 400 });
+    }
+
+    const deleted = [];
+    for (const key of keys) {
+      await store.delete(key);
+      deleted.push(key);
+    }
+    return Response.json({ deleted, count: deleted.length });
+  }
+
   const { blobs } = await store.list();
   const rows = (
-    await Promise.all(blobs.map((b) => store.get(b.key, { type: "json" })))
+    await Promise.all(
+      blobs.map(async (b) => {
+        const row = await store.get(b.key, { type: "json" });
+        return row ? { key: b.key, ...row } : null;
+      })
+    )
   ).filter(Boolean);
 
   rows.sort((a, b) => String(b.at).localeCompare(String(a.at)));
