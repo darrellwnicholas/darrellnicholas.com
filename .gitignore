@@ -17,3 +17,6 @@ incoming/*
 *.log
 .env
 .env.*
+
+# Installed for the download-counter function; never committed
+node_modules/

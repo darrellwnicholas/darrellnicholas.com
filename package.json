@@ -1,0 +1,8 @@
+{
+  "name": "darrell-nicholas-site",
+  "private": true,
+  "description": "Static portfolio site. The only JavaScript that needs installing is the download counter's storage client.",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}

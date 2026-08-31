@@ -38,3 +38,7 @@
     Content-Disposition = "attachment"
     X-Robots-Tag = "noindex, nofollow"
     Cache-Control = "public, max-age=3600"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
