@@ -79,4 +79,19 @@
       });
     });
   }
+
+  /* Counts the visit. Nothing is displayed anywhere on the site — the tally
+     lives behind a token at /e/v/log. It fails silently on purpose: a counter
+     is never worth showing somebody an error. */
+  if (window.fetch) {
+    try {
+      fetch('/e/v', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ p: location.pathname, r: document.referrer }),
+        credentials: 'same-origin',
+        keepalive: true
+      })['catch'](function () {});
+    } catch (e) { /* nothing to do, and nothing worth saying */ }
+  }
 })();
