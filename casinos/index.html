@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Social Casinos I Play — Darrell Nicholas</title>
+<meta name="description" content="The sweepstakes and social casinos I actually play. New players who sign up through these links get the welcome bonus, and I get a referral bonus.">
+<meta name="theme-color" content="#3162EF">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Social Casinos I Play">
+<meta property="og:description" content="Free-to-play sweepstakes casinos, with sign-up links. New players only.">
+<meta property="og:image" content="/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  .casino-tools{ display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin:0 0 26px; }
+  .casino-search{
+    flex:1 1 260px; max-width:420px;
+    font:inherit; padding:12px 16px; border-radius:999px;
+    border:2px solid var(--line); background:var(--card); color:var(--ink);
+  }
+  .casino-search:focus{ border-color:var(--blue); outline:none; }
+  .casino-count{ color:var(--ink-3); font-size:.92rem; }
+  .casino-grid{
+    list-style:none; margin:0; padding:0;
+    display:grid; gap:14px;
+    grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  }
+  .casino{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    box-shadow:var(--shadow-sm); padding:18px 18px 16px;
+    display:flex; flex-direction:column; gap:12px;
+    transition:transform .16s ease, box-shadow .16s ease;
+  }
+  .casino:hover{ transform:translateY(-2px); box-shadow:var(--shadow-md); }
+  .casino-name{ font-weight:800; font-size:1.12rem; letter-spacing:-.015em; margin:0; }
+  .casino-host{ color:var(--ink-3); font-size:.85rem; margin:-8px 0 0; word-break:break-all; }
+  .casino-actions{ display:flex; gap:8px; margin-top:auto; }
+  .casino-actions .btn{ padding:10px 16px; font-size:.95rem; }
+  .casino-actions .btn-primary{ flex:1; }
+  .casino-copy{
+    font:inherit; font-size:.85rem; font-weight:700; cursor:pointer;
+    border:2px solid var(--line); background:transparent; color:var(--ink-2);
+    border-radius:999px; padding:8px 14px;
+  }
+  .casino-copy:hover{ border-color:var(--blue); color:var(--blue); }
+  .casino-note{ max-width:68ch; color:var(--ink-2); }
+  .casino-empty{ display:none; color:var(--ink-3); }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="top">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Darrell Nicholas</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="/#books">Books</a></li>
+        <li><a href="/#app">Apps</a></li>
+        <li><a class="nav-cta" href="#list">Casinos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Social &amp; sweepstakes casinos</p>
+      <h1 style="font-size:clamp(2rem,7vw,3.2rem)">The casinos I actually play.</h1>
+      <p class="lede casino-note">
+        These are free-to-play sweepstakes casinos, and I log into all of them every day.
+        If you don&rsquo;t have an account yet, sign up through the links below. You get the
+        site&rsquo;s welcome bonus, and the site gives me a referral bonus.
+        If you already have an account, just log in like normal.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="list" style="padding-top:clamp(36px,6vw,60px)">
+    <div class="wrap">
+      <div class="casino-tools">
+        <label class="sr-only" for="q">Search casinos</label>
+        <input class="casino-search" id="q" type="search" placeholder="Search casinos…" autocomplete="off">
+        <span class="casino-count" id="count"></span>
+      </div>
+
+      <ul class="casino-grid" id="grid">
+        <li class="casino"><p class="casino-name">American Luck</p><p class="casino-host">americanluck.com</p><div class="casino-actions"><a class="btn btn-primary" href="https://americanluck.com/signup/072ea924-183d-45fe-9178-3d00169f71de" target="_blank" rel="sponsored noopener">Sign up</a><button class="casino-copy" type="button">Copy</button></div></li>
+        <li class="casino"><p class="casino-name">Bink</p><p class="casino-host">bink.bet</p><div class="casino-actions"><a class="btn btn-primary" href="https://bink.bet/darrellnicholas" target="_blank" rel="sponsored noopener">Sign up</a><button class="casino-copy" type="button">Copy</button></div></li>
+        <li class="casino"><p class="casino-name">CoinsBack</p><p class="casino-host">coinsbackcasino.com</p><div class="casino-actions"><a class="btn btn-primary" href="https://www.coinsbackcasino.com/invite/1536118?utm_source=copy&amp;utm_medium=referral&amp;utm_campaign=member-referral" target="_blank" rel="sponsored noopener">Sign up</a><button class="casino-copy" type="button">Copy</button></div></li>
+        <li class="casino"><p class="casino-name">Duel</p><p class="casino-host">duel.com</p><div class="casino-actions"><a class="btn btn-primary" href="https://duel.com/r/PridishFool" target="_blank" rel="sponsored noopener">Sign up</a><button class="casino-copy" type="button">Copy</button></div></li>
+        <li class="casino"><p class="casino-name">Fortune Wins</p><p class="casino-host">fortunewins.com (formerly Fortune Coins)</p><div class="casino-actions"><a class="btn btn-primary" href="https://fortunewins.com/signup/b8c79966-acf2-4d2e-b4be-82d36c4087d9" target="_blank" rel="sponsored noopener">Sign up</a><button class="casino-copy" type="button">Copy</button></div></li>
+        <li class="casino"><p class="casino-name">KingPrize</p><p class="casino-host">kingprize.com</p><div class="casino-actions"><a class="btn btn-primary" href="https://kingprize.com/?ref=8368" target="_blank" rel="sponsored noopener">Sign up</a><button class="casino-copy" type="button">Copy</button></div></li>
+        <li class="casino"><p class="casino-name">Lone Star Casino</p><p class="casino-host">lonestarcasino.com</p><div class="casino-actions"><a class="btn btn-primary" href="https://lonestarcasino.com/refer/3421279" target="_blank" rel="sponsored noopener">Sign up</a><button class="casino-copy" type="button">Copy</button></div></li>
+        <li class="casino"><p class="casino-name">Luck Party</p><p class="casino-host">luckparty.com</p><div class="casino-actions"><a class="btn btn-primary" href="https://luckparty.com/signup/7ffb14e8-febd-404e-b949-045fb17f2b2a" target="_blank" rel="sponsored noopener">Sign up</a><button class="casino-copy" type="button">Copy</button></div></li>
+        <li class="casino"><p class="casino-name">Modo</p><p class="casino-host">modo.us</p><div class="casino-actions"><a class="btn btn-primary" href="https://modo.us/?referralCode=NYHQS6" target="_blank" rel="sponsored noopener">Sign up</a><button class="casino-copy" type="button">Copy</button></div></li>
+        <li class="casino"><p class="casino-name">Pulsz</p><p class="casino-host">pulsz.com</p><div class="casino-actions"><a class="btn btn-primary" href="https://www.pulsz.com/?invited_by=d9gzj9" target="_blank" rel="sponsored noopener">Sign up</a><button class="casino-copy" type="button">Copy</button></div></li>
+        <li class="casino"><p class="casino-name">Pulsz Bingo</p><p class="casino-host">pulszbingo.com</p><div class="casino-actions"><a class="btn btn-primary" href="https://www.pulszbingo.com/?invited_by=9w55s3" target="_blank" rel="sponsored noopener">Sign up</a><button class="casino-copy" type="button">Copy</button></div></li>
+        <li class="casino"><p class="casino-name">RealPrize</p><p class="casino-host">realprize.com</p><div class="casino-actions"><a class="btn btn-primary" href="https://realprize.com/refer/543117" target="_blank" rel="sponsored noopener">Sign up</a><button class="casino-copy" type="button">Copy</button></div></li>
+        <li class="casino"><p class="casino-name">Reel Zappy</p><p class="casino-host">reelzappy.com</p><div class="casino-actions"><a class="btn btn-primary" href="https://reelzappy.com/signup/8d979501-ffd8-424f-9661-0ced3961ae08" target="_blank" rel="sponsored noopener">Sign up</a><button class="casino-copy" type="button">Copy</button></div></li>
+        <li class="casino"><p class="casino-name">Rolla</p><p class="casino-host">rolla.com</p><div class="casino-actions"><a class="btn btn-primary" href="https://www.rolla.com/?raf=1358371" target="_blank" rel="sponsored noopener">Sign up</a><button class="casino-copy" type="button">Copy</button></div></li>
+        <li class="casino"><p class="casino-name">SpinQuest</p><p class="casino-host">spinquest.com</p><div class="casino-actions"><a class="btn btn-primary" href="https://spinquest.com/?u=FSEVHDO" target="_blank" rel="sponsored noopener">Sign up</a><button class="casino-copy" type="button">Copy</button></div></li>
+        <li class="casino"><p class="casino-name">Win Bonanza</p><p class="casino-host">winbonanza.com</p><div class="casino-actions"><a class="btn btn-primary" href="https://winbonanza.com/register/40eee8ce-4d2e-4085-924e-976e9b2152a7" target="_blank" rel="sponsored noopener">Sign up</a><button class="casino-copy" type="button">Copy</button></div></li>
+        <li class="casino"><p class="casino-name">Yay Casino</p><p class="casino-host">yaycasino.com</p><div class="casino-actions"><a class="btn btn-primary" href="https://www.yaycasino.com/signup/4a2879f3-e953-489f-b178-cb95f0f9c146" target="_blank" rel="sponsored noopener">Sign up</a><button class="casino-copy" type="button">Copy</button></div></li>
+        <li class="casino"><p class="casino-name">Zula Casino</p><p class="casino-host">zulacasino.com</p><div class="casino-actions"><a class="btn btn-primary" href="https://www.zulacasino.com/signup/6b82cbcb-34d8-41bd-b7af-9af18d23f228" target="_blank" rel="sponsored noopener">Sign up</a><button class="casino-copy" type="button">Copy</button></div></li>
+      </ul>
+      <p class="casino-empty" id="empty">No casino by that name on the list.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:clamp(36px,6vw,56px)">
+    <div class="wrap">
+      <p class="fineprint casino-note">
+        18+ only (21+ on some sites). No purchase necessary. Sweepstakes are void where prohibited,
+        and eligibility depends on your state, so check each site&rsquo;s terms before you sign up.
+        These are referral links: if you create a new account through one, I may receive a bonus
+        from that site. They don&rsquo;t change anything for players who already have an account.
+        Play for fun, set your own limits, and if it stops being fun, call or text 1-800-GAMBLER.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <p class="footer-name">Darrell Nicholas</p>
+    <p class="footer-note">Independent author and app developer.</p>
+    <p class="footer-legal">&copy; <span id="year">2026</span> Darrell Nicholas. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="/script.js" defer></script>
+<script>
+(function(){
+  var grid=document.getElementById('grid'), q=document.getElementById('q'),
+      count=document.getElementById('count'), empty=document.getElementById('empty'),
+      items=[].slice.call(grid.children);
+  function update(){
+    var term=q.value.trim().toLowerCase(), shown=0;
+    items.forEach(function(li){
+      var hit=!term || li.textContent.toLowerCase().indexOf(term)!==-1;
+      li.hidden=!hit; if(hit) shown++;
+    });
+    count.textContent=shown+' of '+items.length+' casinos';
+    empty.style.display=shown?'none':'block';
+  }
+  q.addEventListener('input',update); update();
+  grid.addEventListener('click',function(e){
+    var b=e.target.closest('.casino-copy'); if(!b) return;
+    var url=b.parentNode.querySelector('a').href;
+    var done=function(){ b.textContent='Copied'; setTimeout(function(){ b.textContent='Copy'; },1500); };
+    if(navigator.clipboard){ navigator.clipboard.writeText(url).then(done,function(){ prompt('Copy this link:',url); }); }
+    else { prompt('Copy this link:',url); }
+  });
+})();
+</script>
+</body>
+</html>
