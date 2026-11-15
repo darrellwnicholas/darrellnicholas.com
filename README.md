@@ -119,3 +119,17 @@ The code — HTML, CSS, JavaScript, the cover-resize script — is MIT licensed.
 
 The content is not: the site copy, the bio, the book titles and descriptions, the cover art,
 the Vector icon and the name stay all rights reserved. The full wording is in [LICENSE](LICENSE).
+
+## Casino links and click stats
+
+`/casinos/` lists referral links. Every button goes through `/go/<slug>`
+(`netlify/functions/go.mjs`), which counts the click and forwards to the referral URL.
+The links live in one place, `netlify/lib/casinos.mjs`; `/go/` only redirects to URLs in
+that table, so it can't be abused as an open redirect.
+
+Stats: `/e/c/log?token=…` (same token as `/e/v/log`): unique page visitors, how many of
+them clicked through, and clicks / unique people per casino. Add `&days=7` for a window
+or `&format=json` for raw numbers.
+
+To add a casino: one line in `netlify/lib/casinos.mjs`, one card in `casinos/index.html`
+with `href="/go/<slug>"`.
