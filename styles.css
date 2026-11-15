@@ -365,3 +365,22 @@ a:hover .cover, .card:hover .cover{ transform:translateY(-4px); box-shadow:0 12p
   .nav,.hero-shapes,.about-art,.signup{ display:none; }
   body{ background:#fff; }
 }
+
+/* ---------------- support (Ko-fi) ---------------- */
+.support-card{
+  display:grid; gap:clamp(22px,4vw,40px); align-items:center;
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-md); padding:clamp(22px,5vw,44px); max-width:920px; margin:0 auto;
+}
+@media (min-width:760px){ .support-card{ grid-template-columns:1fr 220px; } }
+.support-card h2{ margin-bottom:.5em; }
+.support-card p{ color:var(--ink-2); max-width:58ch; }
+.support-card .support-sign{ color:var(--ink); font-weight:700; margin:1.2em 0 1.4em; }
+.support-qr{ text-align:center; }
+.support-qr img{
+  width:200px; height:200px; margin:0 auto 10px; padding:10px;
+  background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+  image-rendering:pixelated;
+}
+.support-qr span{ color:var(--ink-3); font-size:.85rem; }
+@media (max-width:759px){ .support-qr img{ width:170px; height:170px; } }

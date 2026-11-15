@@ -28,3 +28,11 @@ export const CASINOS = {
   "yay": { name: "Yay Casino", url: "https://www.yaycasino.com/signup/4a2879f3-e953-489f-b178-cb95f0f9c146" },
   "zula": { name: "Zula Casino", url: "https://www.zulacasino.com/signup/6b82cbcb-34d8-41bd-b7af-9af18d23f228" },
 };
+
+/**
+ * Non-casino links that go through the same /go/ counter. Kept apart so the
+ * casino stats don't mix them in.
+ */
+export const SUPPORT = {
+  "kofi": { name: "Ko-fi", url: "https://ko-fi.com/darrellnicholas" },
+};

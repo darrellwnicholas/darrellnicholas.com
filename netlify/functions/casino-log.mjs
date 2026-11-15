@@ -1,5 +1,5 @@
 import { getStore } from "@netlify/blobs";
-import { CASINOS } from "../lib/casinos.mjs";
+import { CASINOS, SUPPORT } from "../lib/casinos.mjs";
 
 const SKIP = "dnskip";
 
@@ -41,9 +41,19 @@ export default async (req) => {
     .filter((r) => r.casinoViews > 0 && r.day >= since);
 
   // ---- clicks --------------------------------------------------------------
-  const clickRows = (await readAll(getStore("casino-clicks")))
+  const allClicks = (await readAll(getStore("casino-clicks")))
     .map((r) => ({ ...r, vid: r.key.split("/")[2] || r.key }))
     .filter((r) => r.day >= since);
+  const clickRows = allClicks.filter((r) => !SUPPORT[r.slug]);
+  const kofiRows = allClicks.filter((r) => r.slug === "kofi");
+  const kofi = {
+    clicks: sum(kofiRows, (r) => r.clicks),
+    people: new Set(kofiRows.map((r) => r.vid)).size,
+    fromSite: sum(kofiRows.filter((r) => r.src === "page"), (r) => r.clicks),
+    qr: sum(kofiRows.filter((r) => r.src === "qr"), (r) => r.clicks),
+    other: sum(kofiRows.filter((r) => r.src !== "page" && r.src !== "qr"), (r) => r.clicks),
+    last: kofiRows.reduce((m, r) => (r.last > m ? r.last : m), ""),
+  };
 
   const pageVisitors = new Set(pageRows.map((r) => r.vid));
   const clickers = new Set(clickRows.map((r) => r.vid));
@@ -105,12 +115,12 @@ export default async (req) => {
 
   if (url.searchParams.get("format") === "json") {
     return Response.json(
-      { generatedAt: new Date().toISOString(), since: daysParam > 0 ? since : null, totals, links, days },
+      { generatedAt: new Date().toISOString(), since: daysParam > 0 ? since : null, totals, links, days, kofi },
       { headers: skipCookie() }
     );
   }
 
-  return new Response(page({ totals, links, days, daysParam, token: url.searchParams.get("token") }), {
+  return new Response(page({ totals, links, days, kofi, daysParam, token: url.searchParams.get("token") }), {
     status: 200,
     headers: { "content-type": "text/html; charset=utf-8", ...skipCookie() },
   });
@@ -139,7 +149,7 @@ function skipCookie() {
   };
 }
 
-function page({ totals: t, links, days, daysParam, token }) {
+function page({ totals: t, links, days, kofi, daysParam, token }) {
   const peak = Math.max(1, ...links.map((l) => l.clicks));
   const tok = encodeURIComponent(token || "");
   const range = (n, label) =>
@@ -179,7 +189,7 @@ function page({ totals: t, links, days, daysParam, token }) {
 </head>
 <body>
 <main>
-  <h1>darrellnicholas.com/casinos</h1>
+  <h1>darrellnicholas.com/casinos &amp; Ko-fi</h1>
   <div class="range">${range(0, "All time")}${range(1, "Today")}${range(7, "7 days")}${range(30, "30 days")}</div>
   <div class="tiles">
     <div class="tile"><b>${t.pageVisitors}</b><span>unique visitors to the page</span></div>
@@ -198,6 +208,15 @@ ${links.map((l) => `<tr class="${l.clicks ? "" : "zero"}"><td>${esc(l.name)}</td
     </tbody>
   </table>
   <p class="note">"Shared" means the click came through a copied /go/ link posted somewhere else, or from a browser that sends no referrer.</p>
+
+  <h2>Ko-fi "Buy me a coffee" button</h2>
+  <div class="tiles">
+    <div class="tile"><b>${kofi.clicks}</b><span>clicks to Ko-fi</span></div>
+    <div class="tile"><b>${kofi.people}</b><span>unique people</span></div>
+    <div class="tile"><b>${kofi.fromSite}</b><span>from the site</span></div>
+    <div class="tile"><b>${kofi.qr}</b><span>QR code scans</span></div>
+  </div>
+  <p class="note">Clicks only, not donations; Ko-fi's dashboard shows who actually gave. Last click: ${kofi.last ? esc(kofi.last.slice(0, 16).replace("T", " ")) + " UTC" : "none yet"}.</p>
 
   <h2>By day</h2>
   <table>

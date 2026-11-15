@@ -1,5 +1,5 @@
 import { getStore } from "@netlify/blobs";
-import { CASINOS } from "../lib/casinos.mjs";
+import { CASINOS, SUPPORT } from "../lib/casinos.mjs";
 
 // Same cookies the site-wide visit counter uses, so a person who reads
 // /casinos and then clicks a link is the same visitor in both records.
@@ -14,7 +14,7 @@ function cookie(req, name) {
 }
 
 /**
- * /go/<slug> — counts a click on a casino link, then forwards to the referral URL.
+ * /go/<slug> — counts a click on a casino (or support) link, then forwards to the referral URL.
  *
  * One blob per visitor per casino per day, keyed `YYYY-MM-DD/<slug>/<visitor>`.
  * That gives unique clickers per link per day for free, and the click tally
@@ -25,7 +25,7 @@ function cookie(req, name) {
  */
 export default async (req, context) => {
   const slug = String(context?.params?.slug || "").toLowerCase();
-  const casino = CASINOS[slug];
+  const casino = CASINOS[slug] || SUPPORT[slug];
 
   if (!casino) {
     return new Response(null, { status: 302, headers: { location: "/casinos/" } });
@@ -49,9 +49,11 @@ export default async (req, context) => {
   }
 
   let src = "shared";
-  try {
+  // The printed/on-screen QR code carries ?qr=1 so scans show up separately.
+  if (new URL(req.url).searchParams.get("qr") === "1") src = "qr";
+  else try {
     const ref = new URL(req.headers.get("referer") || "");
-    if (ref.hostname.replace(/^www\./, "") === "darrellnicholas.com" && ref.pathname.startsWith("/casinos")) {
+    if (ref.hostname.replace(/^www\./, "") === "darrellnicholas.com" && (SUPPORT[slug] || ref.pathname.startsWith("/casinos"))) {
       src = "page";
     }
   } catch {
@@ -70,7 +72,7 @@ export default async (req, context) => {
       first: seen?.first || at,
       last: at,
       clicks: (seen?.clicks || 0) + 1,
-      src: seen?.src === "page" ? "page" : src,
+      src: seen?.src === "page" ? "page" : seen?.src === "qr" ? "qr" : src,
       country: seen?.country || context?.geo?.country?.code || null,
       mobile: seen?.mobile ?? /Mobile|Android|iPhone|iPad/i.test(ua),
     });
