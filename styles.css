@@ -384,3 +384,19 @@ a:hover .cover, .card:hover .cover{ transform:translateY(-4px); box-shadow:0 12p
 }
 .support-qr span{ color:var(--ink-3); font-size:.85rem; }
 @media (max-width:759px){ .support-qr img{ width:170px; height:170px; } }
+
+/* ---------------- songs teaser (homepage) ---------------- */
+.songs-teaser{ display:grid; gap:clamp(22px,4vw,40px); align-items:center; }
+@media (min-width:760px){ .songs-teaser{ grid-template-columns:1.1fr 1fr; } }
+.songs-teaser-text{ color:var(--ink-2); max-width:46ch; margin-bottom:1.4em; }
+.songs-teaser-list{ list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+.songs-teaser-list a{
+  display:flex; justify-content:space-between; align-items:center; gap:12px;
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow-sm); padding:16px 20px; color:var(--ink);
+  transition:transform .16s ease, box-shadow .16s ease;
+}
+.songs-teaser-list a:hover{ text-decoration:none; transform:translateY(-2px); box-shadow:var(--shadow-md); }
+.songs-teaser-list b{ font-size:1.08rem; }
+.songs-teaser-list span{ color:var(--ink-3); font-size:.88rem; }
+.songs-teaser-list a::after{ content:"\25B6"; color:var(--orange); font-size:.8rem; margin-left:auto; }
